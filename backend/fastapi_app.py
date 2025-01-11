@@ -18,13 +18,15 @@ logger = logging.getLogger(__name__)
 class AnalyzeRequest(BaseModel):
     job_description: str
     resume: str
+    user_message: str
 
 class GroqResponse(BaseModel):
-    match_score: int
-    feedback: list
-    updated_resume: str
+    # match_score: int
+    # feedback: list
+    # updated_resume: str
+    coach_message: str
 
-@app.post("/analyze_job_resume", response_model=GroqResponse)
+@app.post("/hey_coach", response_model=GroqResponse)
 def analyze_job_resume(request: AnalyzeRequest):
     if not request.job_description or not request.resume:
         logger.error("Invalid input: Job description or resume is missing.")
@@ -32,33 +34,37 @@ def analyze_job_resume(request: AnalyzeRequest):
 
 
     system_message = """
-Using the resume and job description below, tailor the resume to highlight the most relevant areas.
-adjust and enhance the resume content. Make sure this is the best resume ever but don't make up any information. 
-Update every section, including the initial summary, work experience, skills, and education. 
-Better reflect the candidate's abilities and how it matches the job posting.
+    You are a senior job search coach at a career services company.
+    You help clients improve their resumes to better match job descriptions.
+    You help clients prepare for their job interviews based on given job description and resume.
+    You help clients to improve their skills and experiences to better match the job requirements.
 
-expected output: An updated resume that effectively highlights the candidate's qualifications and experiences relevant to the job.
+    To enhance the resume, Make sure this is the best resume ever but don't make up any information. 
+    Ask users which sections they want to update and go through suggestions one section at a time. 
+    Answer any follow up questions and tweak the suggestions
 
-Return the resume in the html format. 
-keep the style simple and similar to the original resume. 
-Do not create tables or use complex formatting.
-Ensure the resume is easy to read and professional.
-"""
+    Job Description:
+    {request.job_description}
+
+    Resume:
+    {request.resume}
+
+    DO NOT include job description or resume in your response to the user.
+    """
 
     user_message = f"""
-Job Description:
-{request.job_description}
+    User has asked following question: {request.user_message}
 
-Resume:
-{request.resume}
-"""
+    Respond to user's questions succinctly, ask follow up questions if required or there is any ambiguity.
 
-    # client = Groq(api_key=groqcloud_api_key)
-    client = instructor.from_groq(Groq(), mode=instructor.Mode.JSON)
+    """
+
+    client = Groq()
+    # client = instructor.from_groq(Groq(), mode=instructor.Mode.JSON)
 
     response = client.chat.completions.create(
         model="mixtral-8x7b-32768",
-        response_model=GroqResponse,
+        # response_model=GroqResponse,
         messages=[
             {"role": "system", "content": system_message},
             {"role": "user", "content": user_message}
@@ -70,10 +76,8 @@ Resume:
         raise HTTPException(status_code=500, detail="GroqCloud request failed")
 
     
-    logger.info("Received response from GroqCloud: %s", response.updated_resume)
+    logger.info("Received response from GroqCloud: %s", response)
 
     return GroqResponse(
-        match_score=response.match_score,
-        feedback=response.feedback,
-        updated_resume=response.updated_resume
+        coach_message=response.choices[0].message.content,
     )
