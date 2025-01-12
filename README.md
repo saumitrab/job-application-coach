@@ -63,11 +63,19 @@ cd ../frontend
 streamlit run app.py
 ```
 
+### Running the docker
+
+```
+docker build -t coach .
+docker run -it -p 7860:7860 coach
+```
+
 ### Usage
 
 1. Open your browser and navigate to the Streamlit app (usually at `http://localhost:8501`).
 2. Enter the job description and your resume.
 3. Click the "Analyze" button to receive a tailored resume and feedback.
+
 
 ## Contributing
 

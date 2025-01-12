@@ -3,13 +3,13 @@ import requests
 
 # Read default job description and resume
 try:
-    with open('samples/sample_job_description.txt', 'r') as file:
+    with open('frontend/samples/sample_job_description.txt', 'r') as file:
         default_job_description = file.read()
 except FileNotFoundError:
     default_job_description = "Paste the job description here."
 
 try:
-    with open('samples/sample_resume.txt', 'r') as file:
+    with open('frontend/samples/sample_resume.txt', 'r') as file:
         default_resume_content = file.read()
 except FileNotFoundError:
     default_resume_content = "Your resume content here."
@@ -60,7 +60,7 @@ if prompt := st.chat_input("Ask the coach..."):
             "user_message": prompt
         }
         try:
-            api_response = requests.post("http://backend:8501/hey_coach", json=payload)
+            api_response = requests.post("http://localhost:8501/hey_coach", json=payload)
             if api_response.status_code == 200:
                 data = api_response.json()
                 coach_message = data.get("coach_message", "No response")
