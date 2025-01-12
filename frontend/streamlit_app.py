@@ -60,7 +60,7 @@ if prompt := st.chat_input("Ask the coach..."):
             "user_message": prompt
         }
         try:
-            api_response = requests.post("http://backend:7860/hey_coach", json=payload)
+            api_response = requests.post("http://backend:8501/hey_coach", json=payload)
             if api_response.status_code == 200:
                 data = api_response.json()
                 coach_message = data.get("coach_message", "No response")
