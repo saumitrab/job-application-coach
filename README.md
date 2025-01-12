@@ -1,4 +1,15 @@
-# Job Application Coach
+---
+title: Job Hunt Coach
+emoji: 🚀
+colorFrom: purple
+colorTo: indigo
+sdk: streamlit
+sdk_version: 1.41.1
+app_file: app.py
+pinned: false
+---
+
+# Job Hunt Coach
 
 This application helps users tailor their resumes to better match job descriptions. By leveraging AI, it analyzes the job description and the user's resume, then provides an updated resume that highlights the most relevant areas, ensuring the best possible match.
 
