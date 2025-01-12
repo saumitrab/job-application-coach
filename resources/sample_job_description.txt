@@ -1,0 +1,9 @@
+Full Stack AI Engineer
+Role
+Seeking a versatile AI Engineer to develop and deploy machine learning solutions. You'll work on LLM fine-tuning, diffusion models, and full-stack web applications.
+
+Required Skills
+Our ideal candidate has experience with Python and Django for backend development, JavaScript/Node.js for frontend and API services, and Rust for performance-critical components. You should have hands-on experience with LLM fine-tuning, an understanding of diffusion models, strong software engineering fundamentals, and eagerness to deepen ML/deep learning expertise.
+
+Responsibilities
+You'll build and optimize ML models, develop full-stack applications, deploy and maintain AI services, collaborate with our research team, and implement efficient data pipelines.

@@ -28,16 +28,21 @@ class GroqResponse(BaseModel):
 
 @app.post("/hey_coach", response_model=GroqResponse)
 def analyze_job_resume(request: AnalyzeRequest):
+    # return GroqResponse(
+    #     coach_message="Hello, I am your job hunt coach. I am here to help you improve your resume and prepare for job interviews. Please provide me with your job description and resume."
+    # )
     if not request.job_description or not request.resume:
         logger.error("Invalid input: Job description or resume is missing.")
         raise HTTPException(status_code=400, detail="Invalid input")
 
 
-    system_message = """
+    system_message = f"""
     You are a senior job search coach at a career services company.
     You help clients improve their resumes to better match job descriptions.
     You help clients prepare for their job interviews based on given job description and resume.
     You help clients to improve their skills and experiences to better match the job requirements.
+    Do not suggest to add new things to resume, only suggest to enhance the existing resume.
+    If skills are missing, ask users to gain certifications or hands on experience in those skills.
 
     To enhance the resume, Make sure this is the best resume ever but don't make up any information. 
     Ask users which sections they want to update and go through suggestions one section at a time. 

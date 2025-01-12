@@ -1,0 +1,29 @@
+ALEX CHEN
+San Francisco, CA | alex.chen@email.com | (555) 123-4567 | github.com/alexchen
+
+PROFESSIONAL SUMMARY
+Senior Software Engineer with 8+ years of experience developing high-performance applications and contributing to open-source projects. Specialized in full-stack development with expertise in PreactJS, Node.js, Java, and C++. Strong focus on performance optimization and scalable architecture design.
+
+EXPERIENCE
+Senior Software Engineer | Cloudscape Technologies | 2020 - Present
+
+Led development of microservices architecture using Node.js and Java, improving system response time by 40%
+Contributed core improvements to PreactJS, reducing bundle size by 15% and enhancing virtual DOM reconciliation
+Architected and implemented real-time data processing pipeline handling 1M+ events per minute
+
+Software Engineer | TechForge Solutions | 2017 - 2020
+
+Developed and maintained C++ backend services processing 500K+ daily transactions
+Created custom Node.js build tools, reducing deployment time by 60%
+Implemented Java-based middleware solutions for enterprise clients
+
+Software Developer | StartupHub | 2015 - 2017
+
+Built responsive web applications using PreactJS and modern JavaScript
+Optimized Java backend services, achieving 30% improvement in response times
+
+TECHNICAL SKILLS
+
+Languages: JavaScript, Java, C++, TypeScript, SQL
+Frameworks: PreactJS, Node.js, Spring Boot, Express.js
+Tools: Git, Docker, Jenkins, Kubernetes, AWS
