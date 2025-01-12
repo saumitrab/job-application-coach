@@ -20,7 +20,7 @@ job_description = default_job_description
 resume_content = default_resume_content
 suggested_questions ="""
 Sample questions to ask the coach:
-1. How can I improve my resume?"
+1. How can I improve my resume?
 2. What skills should I add to my resume?
 3. How well does my resume match the job description?
 4. How can I prepare for this interview?
