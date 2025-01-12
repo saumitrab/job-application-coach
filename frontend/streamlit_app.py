@@ -3,13 +3,13 @@ import requests
 
 # Read default job description and resume
 try:
-    with open('app/samples/sample_job_description.txt', 'r') as file:
+    with open('samples/sample_job_description.txt', 'r') as file:
         default_job_description = file.read()
 except FileNotFoundError:
     default_job_description = "Paste the job description here."
 
 try:
-    with open('app/samples/sample_resume.txt', 'r') as file:
+    with open('samples/sample_resume.txt', 'r') as file:
         default_resume_content = file.read()
 except FileNotFoundError:
     default_resume_content = "Your resume content here."
