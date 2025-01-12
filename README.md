@@ -3,10 +3,8 @@ title: Job Hunt Coach
 emoji: 🚀
 colorFrom: purple
 colorTo: indigo
-sdk: streamlit
-sdk_version: 1.41.1
-app_file: app.py
-pinned: false
+sdk: docker
+app_port: 7860
 ---
 
 # Job Hunt Coach

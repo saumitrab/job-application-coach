@@ -10,6 +10,7 @@ app = FastAPI()
 
 # Load environment variables from .env file
 load_dotenv()
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -25,6 +26,10 @@ class GroqResponse(BaseModel):
     # feedback: list
     # updated_resume: str
     coach_message: str
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
 @app.post("/hey_coach", response_model=GroqResponse)
 def analyze_job_resume(request: AnalyzeRequest):
@@ -64,7 +69,7 @@ def analyze_job_resume(request: AnalyzeRequest):
 
     """
 
-    client = Groq()
+    client = Groq(api_key=GROQ_API_KEY)
     # client = instructor.from_groq(Groq(), mode=instructor.Mode.JSON)
 
     response = client.chat.completions.create(
